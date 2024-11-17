@@ -22,7 +22,7 @@ export default function Post({ title, content, postUser, createdAt, postId }) {
     const getUserLikeForPost = async () => {
         try {
             const response = await axios.get(
-                `http://${ipAddress}:8080/user/${postUser?.name}/post/${postId}/like`
+                `http://${ipAddress}:8080/user/google-oauth2|101483569146996195106/post/${postId}/like`
             );
             console.log("User like response:", response.data);
             const userLike = response.data;
@@ -63,10 +63,12 @@ export default function Post({ title, content, postUser, createdAt, postId }) {
             if (newRateValue === 1) {
                 setLikeButton(true);
                 setDislikeButton(false);
-            } else if (newRateValue === -1) {
+            }
+            else if (newRateValue === -1) {
                 setLikeButton(false);
                 setDislikeButton(true);
-            } else {
+            }
+            else {
                 setLikeButton(false);
                 setDislikeButton(false);
             }
@@ -82,17 +84,23 @@ export default function Post({ title, content, postUser, createdAt, postId }) {
         navigation.navigate("CommentScreen", { postId });
     };
 
+    const userProfile = () => {
+        navigation.navigate("UserActivity", { auth0id: postUser?.auth0id });
+    };
+
     return (
-        <TouchableOpacity onPress={clickedPost} >
-            
+        <TouchableOpacity onPress={clickedPost}>
             <View className="rounded-lg p-4 mt-3 w-full">
                 <View className="mt-1 border-b border-white mb-2"></View>
 
                 <View className="flex-row items-center mb-4">
-                    <Image
-                        source={{ uri: postUser?.imageUrl }}
-                        className="w-10 h-10 rounded-full bg-gray-300"
-                    />
+                    <TouchableOpacity onPress={userProfile}>
+                        <Image
+                            source={{ uri: postUser?.imageUrl }}
+                            className="w-10 h-10 rounded-full bg-gray-300"
+                        />
+                    </TouchableOpacity>
+
                     <View className="ml-3">
                         <Text className="text-white font-bold">{postUser?.name}</Text>
                         <Text className="text-gray-400 text-xs">{createdAt}</Text>

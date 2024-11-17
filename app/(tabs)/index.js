@@ -1,4 +1,4 @@
-import MainScreen from "./MainScreen";
+import MainScreen from "../MainScreen";
 
 export default function index() {
     return (

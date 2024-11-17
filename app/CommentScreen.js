@@ -56,7 +56,7 @@ export default function CommentsScreen() {
     };
 
     return (
-        <ScrollView className="flex-col">
+        <ScrollView className="flex-col bg-black">
 
             {post ? (
                 <Post
@@ -108,7 +108,7 @@ export default function CommentsScreen() {
                     );
                 })
             ) : (
-                <Text className="text-white">No comments yet.</Text>
+                <Text className="text-white text-center mt-5">No comments yet.</Text>
             )}
 
         </ScrollView>

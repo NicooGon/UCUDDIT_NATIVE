@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../components/Post';
-import { getPosts } from '../axios/AxiosPost';
 import { ScrollView } from 'react-native';
+import { getPostsByTitle } from '../axios/AxiosPost';
+import { useLocalSearchParams } from 'expo-router';
 
-export default function MainScreen() {
+export default function PostsBySearch() {
+    const { search } = useLocalSearchParams();
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const data = await getPosts();
-                setPosts(data);
+                const postsData = await getPostsByTitle(search);
+                setPosts(postsData);
             }
             catch (error) {
                 console.error("Error fetching posts:", error);
             }
         };
-        fetchPosts();
-    }, []);
+        if (search) {
+            fetchPosts();
+        }
+    }, [search]);
 
     return (
         <ScrollView className='flex-col w-full bg-black'>

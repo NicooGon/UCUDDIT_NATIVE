@@ -18,7 +18,7 @@ export default function Comment({ content, commentUser, creationDate, commentId 
 
     const getUserLikeForComment = async () => {
         try {
-            const response = await axios.get(`http://${ipAddress}:8080/user/${commentUser.userId}/comment/${commentId}/like`);
+            const response = await axios.get(`http://${ipAddress}:8080/user/google-oauth2|101483569146996195106/comment/${commentId}/like`);
             const userLike = response.data;
             setLikeButton(userLike === 1);
             setDislikeButton(userLike === -1);
