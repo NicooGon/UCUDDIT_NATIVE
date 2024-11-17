@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import TopBar from "../components/TopBar";
-import { Slot, Stack } from "expo-router";
+import { Slot } from "expo-router";
 
 export default function Layout() {
     return (

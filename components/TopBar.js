@@ -17,12 +17,12 @@ export default function TopBar() {
             navigation.navigate('PostBySearch', { search: search });
         }
         else {
-            navigation.navigate('MainScreen')
+            navigation.navigate('(tabs)')
         }
     };
 
     const backToMain = () => {
-        navigation.navigate('MainScreen');
+        navigation.navigate('(tabs)');
     };
 
     return (
