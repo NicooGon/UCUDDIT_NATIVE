@@ -9,7 +9,7 @@ export default function Comment({ content, commentUser, creationDate, commentId 
     const [likesCount, setLikesCount] = useState(0);
     const [disLikesCount, setDisLikesCount] = useState(0);
 
-    const ipAddress = "10.4.3.38";
+    const ipAddress = "192.168.100.105";
     //ucu 10.4.3.38
     //casa 192.168.100.105
 

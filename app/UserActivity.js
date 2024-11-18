@@ -16,7 +16,7 @@ export default function UserActivity() {
     const [showComments, setShowComments] = useState(false);
     const [user, setUser] = useState(null);
 
-    const ipAddress = "10.4.3.38";
+    const ipAddress = "192.168.100.105";
 
     const fetchData = async () => {
 

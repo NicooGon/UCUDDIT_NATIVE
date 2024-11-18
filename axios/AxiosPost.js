@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ipAdress = "10.4.3.38";
+const ipAdress = "192.168.100.105";
 
 export async function getPostsByTitle(title) {
     try {
