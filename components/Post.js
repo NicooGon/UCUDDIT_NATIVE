@@ -11,7 +11,7 @@ export default function Post({ title, content, postUser, createdAt, postId }) {
     const [likesCount, setLikesCount] = useState(0);
     const [disLikesCount, setDislikesCount] = useState(0);
 
-    const ipAddress = "192.168.100.105";
+    const ipAddress = "10.4.3.38";
 
     useEffect(() => {
         console.log(postUser);

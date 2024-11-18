@@ -9,7 +9,9 @@ export default function Comment({ content, commentUser, creationDate, commentId 
     const [likesCount, setLikesCount] = useState(0);
     const [disLikesCount, setDisLikesCount] = useState(0);
 
-    const ipAddress = "192.168.100.105";
+    const ipAddress = "10.4.3.38";
+    //ucu 10.4.3.38
+    //casa 192.168.100.105
 
     useEffect(() => {
         getUserLikeForComment();
@@ -22,7 +24,8 @@ export default function Comment({ content, commentUser, creationDate, commentId 
             const userLike = response.data;
             setLikeButton(userLike === 1);
             setDislikeButton(userLike === -1);
-        } catch (error) {
+        } 
+        catch (error) {
             console.error("Error fetching user like:", error);
         }
     };
@@ -33,7 +36,8 @@ export default function Comment({ content, commentUser, creationDate, commentId 
             setLikesCount(response.data);
             const responseDislikes = await axios.get(`http://${ipAddress}:8080/comment/${commentId}/dislikes`);
             setDisLikesCount(responseDislikes.data);
-        } catch (error) {
+        } 
+        catch (error) {
             console.error("Error fetching likes count:", error);
         }
     };
@@ -53,10 +57,12 @@ export default function Comment({ content, commentUser, creationDate, commentId 
             if (newRateValue === 1) {
                 setLikeButton(true);
                 setDislikeButton(false);
-            } else if (newRateValue === -1) {
+            } 
+            else if (newRateValue === -1) {
                 setLikeButton(false);
                 setDislikeButton(true);
-            } else {
+            } 
+            else {
                 setLikeButton(false);
                 setDislikeButton(false);
             }
@@ -68,12 +74,8 @@ export default function Comment({ content, commentUser, creationDate, commentId 
 
     };
 
-    const clickedPost = () => {
-        navigation.navigate(`/post/${postId}`);
-    };
-
     return (
-        <View className="rounded-lg p-4 mt-3 w-full" onPress={clickedPost}>
+        <View className="rounded-lg p-4 mt-3 w-full">
             <View className="mt-1 border-b border-white mb-2"></View>
 
             <View className="flex-row items-center mb-4">

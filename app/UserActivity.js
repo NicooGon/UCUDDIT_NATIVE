@@ -4,6 +4,7 @@ import Post from "../components/Post";
 import Comment from "../components/Comment";
 import axios from "axios";
 import { View, Text, TouchableOpacity, Image, ScrollView, ActivityIndicator } from "react-native";
+import { Link } from 'expo-router';
 
 export default function UserActivity() {
     const { auth0id } = useLocalSearchParams();
@@ -14,11 +15,11 @@ export default function UserActivity() {
     const [showLikes, setShowLikes] = useState(false);
     const [showComments, setShowComments] = useState(false);
     const [user, setUser] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const ipAddress = "192.168.100.105";
+
+    const ipAddress = "10.4.3.38";
 
     const fetchData = async () => {
-        setIsLoading(true);
+
         try {
             const userResponse = await axios.get(`http://${ipAddress}:8080/userByAuth0id`, { params: { auth0id } });
             setUser(userResponse.data);
@@ -31,10 +32,9 @@ export default function UserActivity() {
 
             const likesResponse = await axios.get(`http://${ipAddress}:8080/likedByUser`, { params: { auth0id, likes: 1 } });
             setMyLikes(likesResponse.data);
-        } catch (error) {
+        }
+        catch (error) {
             console.error("Error fetching data:", error);
-        } finally {
-            setIsLoading(false);
         }
     };
 
@@ -126,14 +126,17 @@ export default function UserActivity() {
                             <Text className="text-white">No comments found.</Text>
                         ) : (
                             myComments.map((comment) => (
-                                <Comment
-                                    key={comment.commentId}
-                                    commentId={comment.commentId}
-                                    content={comment.content}
-                                    creationDate={comment.creationDate}
-                                    commentUser={comment.user}
-                                    postUser={comment.post}
-                                />
+                                <Link
+                                    href={`/post/${comment.post.postId}`}>
+                                    <Comment
+                                        key={comment.commentId}
+                                        commentId={comment.commentId}
+                                        content={comment.content}
+                                        creationDate={comment.creationDate}
+                                        commentUser={comment.user}
+                                        postUser={comment.post}
+                                    />
+                                </Link>
                             ))
                         )}
                     </View>

@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function SettingsScreen() {
     const [user, setUser] = useState(null);
-    const ipAddress = "192.168.100.105";
+    const ipAddress = "10.4.3.38";
     const navigation = useNavigation();
 
     const fetchData = async () => {

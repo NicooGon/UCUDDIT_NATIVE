@@ -11,7 +11,7 @@ export default function CommentsScreen() {
     const [post, setPost] = useState(null);
     const [comment, setComment] = useState('');
     const [comments, setComments] = useState([]);
-    const ipAddress = "192.168.100.105";
+    const ipAddress = "10.4.3.38";
 
     useEffect(() => {
         const fetchPostAndComments = async () => {
