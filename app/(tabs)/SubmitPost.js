@@ -60,9 +60,9 @@ export default function SubmitPost() {
                     Create a Post
                 </Text>
 
-                <View className="w-full mb-5">
+                <View className="w-full mb-5 "> 
                     <DropDownPicker
-                        className="bg-gray-600 rounded-2xl"
+                        className="bg-gray-600 rounded-2xl "
                         items={items}
                         open={isOpen}
                         setOpen={() => setIsOpen(!isOpen)}
@@ -75,7 +75,6 @@ export default function SubmitPost() {
                         }}
 
                         showTickIcon={true}
-                        showArrowIcon={true}
                         placeholder="Select a community!"
                         placeholderStyle={{ color: 'white' }}
                         labelStyle={{ color: 'white' }}  

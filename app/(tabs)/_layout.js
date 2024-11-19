@@ -32,6 +32,15 @@ export default function TabsLayout() {
                 }}
             />
             <Tabs.Screen
+                name="Community"
+                options={{
+                    title: 'Communities',
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="users" color={color} size={30} />
+                    ),
+                }}
+            />
+            <Tabs.Screen
                 name="Settings"
                 options={{
                     title: 'Profile',
