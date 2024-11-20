@@ -4,29 +4,14 @@ import Informatics from './Images/1695133555250.jpeg';
 import Psychology from './Images/images.jpeg';
 import Business from './Images/5254.jpg';
 import { useNavigation } from '@react-navigation/native'; 
+import { Link } from 'expo-router';
 
 export default function Community() {
-    const navigation = useNavigation();
-
-    const goToGeneral = () => {
-        navigation.navigate('PostCommunityScreen', { community: 1 });
-    }
-
-    const goToInformatics = () => {
-        navigation.navigate('PostCommunityScreen', { community: 2 });
-    }
-
-    const goToPsychology = () => {
-        navigation.navigate('PostCommunityScreen', { community: 3 });
-    }
-
-    const goToBusiness = () => {
-        navigation.navigate('PostCommunityScreen', { community: 4 });
-    }
-
+    
     return (
-        <View className="flex-1 justify-center bg-black">
-            <TouchableOpacity className="justify-center items-center mt-3 p-3" onPress={goToGeneral}>
+        <View className="flex-1 justify-center items-center bg-black">
+
+            <Link href="/CommunityPost/1" className="justify-center items-center mt-3 p-3">
                 <View className="relative w-72 h-24">
                     <Image
                         source={UCU}
@@ -38,9 +23,9 @@ export default function Community() {
                         </Text>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </Link>
 
-            <TouchableOpacity className="justify-center items-center mt-3 p-3" onPress={goToInformatics}>
+            <Link href="/CommunityPost/2" className="justify-center items-center mt-3 p-3">
                 <View className="relative w-72 h-24">
                     <Image
                         source={Informatics}
@@ -52,9 +37,9 @@ export default function Community() {
                         </Text>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </Link>
 
-            <TouchableOpacity className="justify-center items-center mt-3 p-3" onPress={goToPsychology}>
+            <Link href="/CommunityPost/3" className="justify-center items-center mt-3 p-3">
                 <View className="relative w-72 h-24">
                     <Image
                         source={Psychology}
@@ -66,9 +51,9 @@ export default function Community() {
                         </Text>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </Link>
 
-            <TouchableOpacity className="justify-center items-center mt-3 p-3" onPress={goToBusiness}>
+            <Link href="/CommunityPost/4" className="justify-center items-center mt-3 p-3">
                 <View className="relative w-72 h-24">
                     <Image
                         source={Business}
@@ -80,7 +65,7 @@ export default function Community() {
                         </Text>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </Link>
 
         </View>
     );

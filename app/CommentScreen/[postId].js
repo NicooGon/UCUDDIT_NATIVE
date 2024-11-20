@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocalSearchParams } from 'expo-router';
-import Post from '../components/Post';
-import { CreateComment } from '../axios/AxiosComment';
-import Comment from '../components/Comment';
+import Post from '../../components/Post';
+import { CreateComment } from '../../axios/AxiosComment';
+import Comment from '../../components/Comment';
 import { Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native';
 
 export default function CommentsScreen() {

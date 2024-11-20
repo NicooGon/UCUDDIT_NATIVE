@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import axios from "axios";
-import { useNavigation } from "expo-router";
+import { Link } from "expo-router";
 
 export default function Post({ title, content, postUser, createdAt, postId }) {
-    const navigation = useNavigation();
     const [likeButton, setLikeButton] = useState(false);
     const [dislikeButton, setDislikeButton] = useState(false);
     const [likesCount, setLikesCount] = useState(0);
@@ -80,56 +79,49 @@ export default function Post({ title, content, postUser, createdAt, postId }) {
         }
     };
 
-    const clickedPost = () => {
-        navigation.navigate("CommentScreen", { postId });
-    };
-
-    const userProfile = () => {
-        navigation.navigate("UserActivity", { auth0id: postUser?.auth0id });
-    };
-
     return (
-        <TouchableOpacity onPress={clickedPost}>
-            <View className="rounded-lg p-4 mt-3 w-full">
-                <View className="mt-1 border-b border-white mb-2"></View>
 
-                <View className="flex-row items-center mb-4">
-                    <TouchableOpacity onPress={userProfile}>
-                        <Image
-                            source={{ uri: postUser?.imageUrl }}
-                            className="w-10 h-10 rounded-full bg-gray-300"
-                        />
-                    </TouchableOpacity>
+        <View className="rounded-lg p-4 w-full">
+            <View className="mt-1 border-b border-white mb-2"></View>
+            <Link href={`/CommentScreen/${postId}`} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }}></Link>
 
-                    <View className="ml-3">
-                        <Text className="text-white font-bold">{postUser?.name}</Text>
-                        <Text className="text-gray-400 text-xs">{createdAt}</Text>
-                    </View>
+            <View className="flex-row items-center mb-4">
+                <Link href={`/UserActivity/${postUser.auth0id}`} style={{ zIndex: 3 }}>
+                    <Image
+                        source={{ uri: postUser?.imageUrl }}
+                        className="w-10 h-10 rounded-full bg-gray-300"
+                    />
+                </Link>
+
+                <View className="ml-3" style={{ zIndex: 3 }}>
+                    <Text className="text-white font-bold">{postUser?.name}</Text>
+                    <Text className="text-gray-400 text-xs">{createdAt}</Text>
                 </View>
-
-                <Text className="text-white text-lg font-bold mb-2">{title}</Text>
-                <Text className="text-white text-base">{content}</Text>
-
-                <View className="flex-row items-center mt-4">
-                    <View className="flex-row items-center bg-gray-800 rounded-2xl">
-                        <TouchableOpacity onPress={() => toggleLikeDislike(1)} className="p-2">
-                            <Icon name="thumbs-up" size={20} color={likeButton ? "lightblue" : "white"} />
-                        </TouchableOpacity>
-
-                        <Text className="text-white text-lg mx-1">{likesCount - disLikesCount}</Text>
-
-                        <TouchableOpacity onPress={() => toggleLikeDislike(-1)} className="p-2">
-                            <Icon name="thumbs-down" size={20} color={dislikeButton ? "lightblue" : "white"} />
-                        </TouchableOpacity>
-                    </View>
-
-                    <TouchableOpacity className="p-2 ml-4 bg-gray-800 rounded-2xl" onPress={clickedPost}>
-                        <Icon name="comment" size={20} color="white" />
-                    </TouchableOpacity>
-                </View>
-
-                <View className="w-100 mt-2 border-b border-white"></View>
             </View>
-        </TouchableOpacity>
+
+            <Text className="text-white text-lg font-bold mb-2">{title}</Text>
+            <Text className="text-white text-base">{content}</Text>
+
+            <View className="flex-row items-center mt-4" style={{ zIndex: 3 }}>
+                <View className="flex-row items-center bg-gray-800 rounded-2xl">
+                    <TouchableOpacity onPress={() => toggleLikeDislike(1)} className="p-2" >
+                        <Icon name="thumbs-up" size={20} color={likeButton ? "lightblue" : "white"} />
+                    </TouchableOpacity>
+
+                    <Text className="text-white text-lg mx-1">{likesCount - disLikesCount}</Text>
+
+                    <TouchableOpacity onPress={() => toggleLikeDislike(-1)} className="p-2">
+                        <Icon name="thumbs-down" size={20} color={dislikeButton ? "lightblue" : "white"} />
+                    </TouchableOpacity>
+                </View>
+
+                <Link href={`/${postId}`} className="p-2 ml-4 bg-gray-800 rounded-2xl" >
+                    <Icon name="comment" size={20} color="white" />
+                </Link>
+            </View>
+
+            <View className="w-100 mt-2 border-b border-white"></View>
+        </View>
+
     );
 }

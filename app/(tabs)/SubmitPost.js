@@ -35,7 +35,10 @@ export default function SubmitPost() {
 
             await createPost(postData);
             Alert.alert('Your post has been created successfully!');
-            setTimeout(() => navigation.navigate("MainScreen"), 3000);
+            setContent('');
+            setTitle('');
+            setCurrentValue('');
+            setTimeout(() => navigation.navigate("(MainScreen)"), 2000);
         }
         catch (error) {
             console.error(error);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalSearchParams } from 'expo-router';
-import Post from '../components/Post';
+import Post from '../../components/Post';
 import axios from 'axios';
 import { Text, ScrollView } from 'react-native';
 

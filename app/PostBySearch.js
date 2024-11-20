@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Post from '../components/Post';
 import { ScrollView } from 'react-native';
+import Post from '../components/Post';
 import { getPostsByTitle } from '../axios/AxiosPost';
 import { useLocalSearchParams } from 'expo-router';
 
@@ -13,11 +13,11 @@ export default function PostsBySearch() {
             try {
                 const postsData = await getPostsByTitle(search);
                 setPosts(postsData);
-            }
-            catch (error) {
-                console.error("Error fetching posts:", error);
+            } catch (error) {
+                console.error('Error fetching posts:', error);
             }
         };
+
         if (search) {
             fetchPosts();
         }
@@ -25,12 +25,9 @@ export default function PostsBySearch() {
 
     return (
         <ScrollView className='flex-col w-full bg-black'>
-
             {posts.map(post => {
                 const { postId, user, title, content, createdAt, likes = 0 } = post;
-
                 return (
-
                     <Post
                         key={postId}
                         postId={postId}
@@ -42,8 +39,6 @@ export default function PostsBySearch() {
                     />
                 );
             })}
-
         </ScrollView>
-
     );
 }

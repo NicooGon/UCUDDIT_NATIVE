@@ -1,7 +1,7 @@
-import { useLocalSearchParams, useNavigation } from 'expo-router';
+import { useLocalSearchParams,  Link } from 'expo-router';
 import { useState, useEffect } from "react";
-import Post from "../components/Post";
-import Comment from "../components/Comment";
+import Post from "../../components/Post";
+import Comment from "../../components/Comment";
 import axios from "axios";
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 
@@ -15,7 +15,6 @@ export default function UserActivity() {
     const [showLikes, setShowLikes] = useState(false);
     const [showComments, setShowComments] = useState(false);
     const [user, setUser] = useState(null);
-    const navigation = useNavigation();
 
     const ipAddress = "192.168.100.105";
 
@@ -62,11 +61,6 @@ export default function UserActivity() {
         setShowLikes(false);
         setShowComments(true);
     };
-
-    const goToPost = (postId) => {
-        console.log('Navigating to CommentScreen with postId:', postId);
-        navigation.navigate("CommentScreen", { postId });
-    }
 
     return (
         <View className="flex-1 items-center bg-black p-4">
@@ -132,7 +126,7 @@ export default function UserActivity() {
                             <Text className="text-white">No comments found.</Text>
                         ) : (
                             myComments.map((comment) => (
-                                <TouchableOpacity key={comment.commentId} onPress={() => goToPost(comment.post.postId)}>
+                                <Link href={`/${comment.post.postId}`} key={comment.commentId}>
                                     <Comment
                                         key={comment.commentId} 
                                         commentId={comment.commentId}
@@ -141,7 +135,7 @@ export default function UserActivity() {
                                         commentUser={comment.user}
                                         postUser={comment.post}
                                     />
-                                </TouchableOpacity>
+                                </Link>
                             ))
                         )}
                     </View>
