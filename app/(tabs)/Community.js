@@ -3,7 +3,6 @@ import UCU from './Images/1579542124909.jpeg';
 import Informatics from './Images/1695133555250.jpeg';
 import Psychology from './Images/images.jpeg';
 import Business from './Images/5254.jpg';
-import { useNavigation } from '@react-navigation/native'; 
 import { Link } from 'expo-router';
 
 export default function Community() {

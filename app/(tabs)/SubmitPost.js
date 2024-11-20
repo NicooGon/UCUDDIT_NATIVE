@@ -38,7 +38,7 @@ export default function SubmitPost() {
             setContent('');
             setTitle('');
             setCurrentValue('');
-            setTimeout(() => navigation.navigate("(MainScreen)"), 2000);
+            setTimeout(() => navigation.navigate("MainScreen"), 2000);
         }
         catch (error) {
             console.error(error);

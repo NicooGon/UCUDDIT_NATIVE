@@ -1,5 +1,4 @@
 import { View } from "react-native";
-import TopBar from "../components/TopBar";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 

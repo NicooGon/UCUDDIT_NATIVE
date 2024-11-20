@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
 import { Link } from 'expo-router';
 
 export default function SettingsScreen() {
     const [user, setUser] = useState(null);
     const ipAddress = "192.168.100.105";
-    const navigation = useNavigation();
 
     const fetchData = async () => {
         try {
             const userResponse = await axios.get(`http://${ipAddress}:8080/userNative`);
             setUser(userResponse.data);
-        } catch (error) {
+        } 
+        catch (error) {
             console.error("Error fetching data:", error);
         }
     };

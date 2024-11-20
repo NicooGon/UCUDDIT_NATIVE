@@ -126,7 +126,7 @@ export default function UserActivity() {
                             <Text className="text-white">No comments found.</Text>
                         ) : (
                             myComments.map((comment) => (
-                                <Link href={`/${comment.post.postId}`} key={comment.commentId}>
+                                <Link href={`/CommentScreen/${comment.post.postId}`} key={comment.commentId}>
                                     <Comment
                                         key={comment.commentId} 
                                         commentId={comment.commentId}
