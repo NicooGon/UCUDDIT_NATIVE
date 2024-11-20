@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
-import Post from '../components/Post';
-import { getPostsByTitle } from '../axios/AxiosPost';
+import Post from '../../components/Post';
+import { getPostsByTitle } from '../../axios/AxiosPost';
 import { useLocalSearchParams } from 'expo-router';
 
 export default function PostsBySearch() {

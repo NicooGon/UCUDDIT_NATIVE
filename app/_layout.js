@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
@@ -14,7 +14,8 @@ export default function Layout() {
                 <Stack.Screen name='[postId]' />
                 <Stack.Screen name='[community]' />
                 <Stack.Screen name='[auth0id]' />
-                <Stack.Screen name='(tabs)' options={{headerShown:false}}/>
+                <Stack.Screen name='(tabs)' options={{headerShown:false}} />
+                <Stack.Screen name="[search]"/>
             </Stack>
         </View>
     );

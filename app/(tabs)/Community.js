@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import UCU from './Images/1579542124909.jpeg';
 import Informatics from './Images/1695133555250.jpeg';
 import Psychology from './Images/images.jpeg';

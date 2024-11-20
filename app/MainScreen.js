@@ -1,45 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../components/Post';
 import { getPosts } from '../axios/AxiosPost';
-import { ScrollView } from 'react-native';
+import { FlatList, View, Button, Text } from 'react-native';
 
 export default function MainScreen() {
     const [posts, setPosts] = useState([]);
+    const [isRefreshing, setIsRefreshing] = useState(false);
+
+    const fetchPosts = async () => {
+        try {
+            const data = await getPosts();
+            setPosts(data);
+        }
+        catch (error) {
+            console.error("Error fetching posts:", error);
+        }
+    };
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const data = await getPosts();
-                setPosts(data);
-            }
-            catch (error) {
-                console.error("Error fetching posts:", error);
-            }
-        };
         fetchPosts();
     }, []);
 
+    const handleRefresh = async () => {
+        setIsRefreshing(true);
+        await fetchPosts();
+        setIsRefreshing(false);
+    };
+
+
     return (
-        <ScrollView className='flex-col w-full bg-black'>
+        <View style={{ flex: 1, backgroundColor: 'black' }}>
 
-            {posts.map(post => {
-                const { postId, user, title, content, createdAt, likes = 0 } = post;
+            <FlatList
+                data={posts}
+                onRefresh={handleRefresh}
+                refreshing={isRefreshing}
+                keyExtractor={(item) => item.postId.toString()}
+                
+                renderItem={({ item }) => {
+                    const { postId, user, title, content, createdAt, likes = 0 } = item;
+                    return (
+                        <Post
+                            postId={postId}
+                            title={title}
+                            content={content}
+                            createdAt={createdAt}
+                            postUser={user}
+                            likes={likes}
+                        />
+                    );
+                }}
+            />
 
-                return (
-
-                    <Post
-                        key={postId}
-                        postId={postId}
-                        title={title}
-                        content={content}
-                        createdAt={createdAt}
-                        postUser={user}
-                        likes={likes}
-                    />
-                );
-            })}
-
-        </ScrollView>
-
+        </View>
     );
 }
