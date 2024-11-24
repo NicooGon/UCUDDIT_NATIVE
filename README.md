@@ -1,87 +1,52 @@
-#Instrucciones
+# Intrucciones
 
-##Antes de comenzar, asegúrate de tener instalados los siguientes programas y herramientas:
+## Tener instalado:
 
--PostgreSQL versión 17.
+- PostgreSQL versión 17
+- pgAdmin 4 v8.12 (o cualquier gestor de base de datos de preferencias)
+- Tener un Script en la base de datos llamado "ucuddit"
+- Node.js versión 21.6.2.
+- IntelliJ IDEA: Versión 2024.2.3
+- React Native versión 0.76.2
+- Expo SDK: Versión 52.0.7
+- Git, para clonar el repositorio que contiene el código fuente del proyecto
+- Expo Go SKD 51: Aplicación móvil necesaria para ejecutar la aplicación mobile en un dispositivo físico
 
--pgAdmin 4 v8.12 (o cualquier gestor de base de datos de tu preferencia).
+## Pasos para la instalación:
 
--Un script en la base de datos llamado "ucuddit".
+- Clonar el proyecto usando git clone <URL del repositorio>
 
--Node.js versión 21.6.2.
+### Configuracion del front (React Native):
 
--IntelliJ IDEA: versión 2024.2.3.
+- Luego de clonado el repositorio, abrir el proyecto en Visual Studio (o cualquier IDE de preferencia) y ejecutar el comando 'npm install' para instalar todas las dependencias utilizadas.
 
--React Native versión 0.76.2.
+### Configuración y ejecución del backend:
 
--Expo SDK: versión 52.0.7.
+- En postgres tener la base de datos creada con el nombre "ucuddit" y haber ejecutado el script
+- Ejecuta el backend desde IntelliJ IDEA y déjalo funcionando en segundo plano para que la aplicación móvil pueda conectarse a él. Las entidades en la base de datos se crearan automaticamente al ejecutar el backend.
 
--Git, para clonar el repositorio con el código fuente del proyecto.
+### Ejecución del proyecto mobile:
 
--Expo Go SDK 51: aplicación móvil necesaria para ejecutar la aplicación en un dispositivo físico.
-
-
-##Pasos para la instalación
-
-Clonar el proyecto
-
-Clona el repositorio del proyecto utilizando el siguiente comando:
-
-'git clone <URL del repositorio>'
-
-
-##Configuración del front (React Native)
-
--Una vez clonado el repositorio, abre el proyecto en Visual Studio Code (o cualquier IDE de tu preferencia).
-
--En la terminal del proyecto, ejecuta el comando:
-
-'npm install'
-
--Esto instalará todas las dependencias necesarias para el correcto funcionamiento del proyecto.
+- Desde la carpeta del front, ejecutar el siguiente comando para iniciar la aplicación móvil: `npm start`.
+- Esto mostrará en tu consola un QR y la dirección IP de tu computadora junto con un puerto de React Native.
+- Copie la dirección IP sin el puerto y modifica todas las variables “ipAdress” en el código del proyecto, reemplazando el valor entre comillas con tu dirección IP local (por ejemplo, 192.168.x.x) y guarda los cambios. Esto permitirá que la aplicación se conecte al backend.
+- Descarga y abre la aplicación Expo Go en tu dispositivo móvil, escanea el código QR generado, y la aplicación se ejecutará automáticamente (Asegurate de estar conectado a la misma red en tu dispositivo movil y computadora).
 
 
-##Configuración y ejecución del backend
+## Arquitectura:
 
-=Crea una base de datos en PostgreSQL con el nombre "ucuddit".
+### Frontend:
 
-=Ejecuta el script proporcionado para cargar la estructura inicial de la base de datos.
+La arquitectura del frontend de mi sistema se basa en el patrón de diseño Component-Based Architecture (Arquitectura basada en componentes), el mismo da enteneder que el proyecto está compuesto de componentes reutilizables y bien delimitados en responsabilidad. Además, el código está estructurado en carpetas especificas separando el código y lógica de `.js` en componentes y app.
 
-=Abre el backend en IntelliJ IDEA y ejecútalo. Esto generará automáticamente las entidades en la base de datos y permitirá que la aplicación móvil se conecte al servidor.
+[Arquitectura del backend](https://github.com/NicooGon/UCUDDIT\_backend)
 
+## Decisiones Técnicas:
 
-=Ejecución del proyecto móvil
+Uso de react navigation para utilizar rutas dinamicas y Stack (para navegar con animaciones). Ademas se incluyeron las tabs, las cuales me parecen necesarias para el estilo de la aplicacion.
 
-##Desde la carpeta del frontend, abre una terminal y ejecuta:
+No fue necesario el uso de useContext debido a que no hay prop drealing.
 
-'npm start'
-
--Esto mostrará un código QR en la consola, junto con la dirección IP de tu computadora y un puerto de React Native.
-
--Copia la dirección IP (sin el puerto) y reemplázala en todas las variables ipAdress dentro del código del proyecto. Guarda los cambios. Esto es necesario para que la aplicación pueda conectarse al backend.
-
--Descarga la aplicación Expo Go en tu dispositivo móvil, escanea el código QR generado y la aplicación se ejecutará automáticamente.
-
--Nota: Asegúrate de que tu dispositivo móvil y computadora estén conectados a la misma red.
+Fue necesario el uso de dropdown-picker para realizar una select list de communities, debido a que react-native no tiene un componente similar.
 
 
-##Arquitectura
-
-El frontend del sistema sigue el patrón de diseño Component-Based Architecture (Arquitectura basada en componentes). Esto significa que el proyecto está compuesto por componentes reutilizables,
-
-con responsabilidades bien definidas. Además, el código está organizado en carpetas específicas que separan la lógica y los archivos .js en componentes y la carpeta principal de la aplicación.
-
-
-##Backend
-Para más detalles sobre la arquitectura del backend, puedes consultar el siguiente enlace:
-
-[Arquitectura del backend](https://github.com/NicooGon/UCUDDIT_backend)
-
-
-##Decisiones técnicas
-
--Se utilizó React Navigation para manejar rutas dinámicas y un Stack Navigator, lo que permite realizar transiciones con animaciones suaves entre pantallas. Además, se incorporaron tabs para mejorar la navegación y el estilo de la aplicación.
-
--No fue necesario utilizar useContext, ya que no se encontraron casos de prop drilling en el proyecto.
-
--Se empleó Dropdown Picker para implementar una lista desplegable de comunidades, ya que React Native no cuenta con un componente similar de manera predeterminada.
