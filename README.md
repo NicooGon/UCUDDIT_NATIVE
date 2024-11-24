@@ -49,4 +49,4 @@ No fue necesario el uso de useContext debido a que no hay prop drealing.
 
 Fue necesario el uso de dropdown-picker para realizar una select list de communities, debido a que react-native no tiene un componente similar.
 
-
+[Video Demostrativo](https://drive.google.com/file/d/1_k2bbFPHcNgOS8xVnO1D3g7Da9hoTrbU/view?usp=sharing)
